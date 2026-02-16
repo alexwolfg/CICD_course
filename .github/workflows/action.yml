@@ -1,0 +1,26 @@
+name: 'Business Greetings'
+
+on:
+  workflow_call:
+    inputs:
+      name:
+        required: true
+        default: 'Learner'
+        type: string
+    outputs: 
+      sentence:
+        description: " "
+        value: ${{ jobs.generate.outputs.sentence }}
+    
+jobs:
+  generate: 
+    runs-on: ubuntu-latest
+    outputs: 
+      sentence: ${{ steps.set_sentence.outputs.sentence }}
+    steps:
+    - name: Set sentence
+      id: set_sentence
+      #github.action_path apunta al folder donde se encuentra action.yml
+      run: |
+        message="Hello, ${{ inputs.name }}! Welcome to Continuous Integration."
+        echo "sentence=$message" >> $GITHUB_OUTPUT

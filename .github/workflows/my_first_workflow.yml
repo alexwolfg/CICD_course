@@ -23,18 +23,16 @@ jobs:
               uses: actions/setup-node@v3
               with:
                 node-version: latest
+    use_sentence:
+        uses: ./.github/workflows/action.yml
+        with:
+            name: 'Alejandro'
+    use_output:
+        needs: use_sentence
+        runs-on: ubuntu-latest
+        steps:
+            - name: Usar frase
+              run: |
+                echo "La frase es ${{ needs.use_sentence.outputs.sentence }}"
 
-            - name: Customize action
-              uses: ./lesson-3-demos
-              with:
-                name: 'Alejandro'
-
-            # - name: Install dependencies
-            #   run: |
-            #     npm ci
-
-            # - name: Run test
-            #   run: npm test
             
-            - name: Print a message
-              run: echo "Hello world"
