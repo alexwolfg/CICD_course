@@ -13,5 +13,5 @@ outputs:
 runs:
   using: 'composite'
   steps:
-    - run: 'main.py'
+    - run: 'python main.py'
       shell: bash
