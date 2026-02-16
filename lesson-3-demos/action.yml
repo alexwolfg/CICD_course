@@ -13,5 +13,6 @@ outputs:
 runs:
   using: 'composite'
   steps:
-    - run: python ${{ github.action_path }} main.py
+    #github.action_path apunta al folder donde se encuentra action.yml
+    - run: python ${{ github.action_path }}/main.py
       shell: bash
