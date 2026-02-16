@@ -14,5 +14,5 @@ runs:
   using: 'composite'
   steps:
     #github.action_path apunta al folder donde se encuentra action.yml
-    - run: python ${{ github.action_path }}/main.py
+    - run: echo "Hello, ${{ inputs.name }}! Welcome to Continuous Integration.'" >> $GITHUB_OUTPUT
       shell: bash
