@@ -24,3 +24,4 @@ jobs:
       run: |
         message="Hello, ${{ inputs.name }}! Welcome to Continuous Integration."
         echo "sentence=$message" >> $GITHUB_OUTPUT
+        echo "Este es el directorio $GITHUB_REF" >> $GITHUB_OUTPUT
