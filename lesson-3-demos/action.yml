@@ -1,0 +1,17 @@
+name: 'Business Greetings'
+description: 'Offer greetings and timestamps'
+
+inputs:
+  name:
+    description: 'Name of the person to greet'
+    required: true
+    default: 'Learner'
+outputs:
+  timestamps:
+    description: 'Time for greetings'
+
+runs:
+  using: 'composite'
+  steps:
+    - run: 'main.py'
+      shell: bash
