@@ -25,7 +25,7 @@ jobs:
                 node-version: latest
 
             - name: Customize action
-              uses: alexwolfg/CICD_course/lesson-3-demos@main
+              uses: alexwolfg/lesson-3-demos@main
               with:
                 name: 'Alejandro'
 
