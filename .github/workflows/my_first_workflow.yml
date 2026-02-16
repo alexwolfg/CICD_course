@@ -24,6 +24,11 @@ jobs:
               with:
                 node-version: latest
 
+            - name: Customize action
+              uses: alexwolfg/lesson-3-demos@main
+              with:
+                name: 'Alejandro'
+
             - name: Install dependencies
               run: |
                 npm ci
