@@ -31,5 +31,4 @@ jobs:
         - name: Generate the moment of greeting
           id: gen_time
           run: |
-            hour="El mensaje fue generado a esta hora: $(date)"
-            echo "tiempo=$hour" >> $GITHUB_OUTPUT
+            echo "tiempo=El mensaje fue generado a esta hora: $(date)" >> $GITHUB_OUTPUT
