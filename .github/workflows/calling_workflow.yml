@@ -1,0 +1,20 @@
+name: Workflow to use the output
+
+on:
+    workflow_dispatch:
+    push:
+        branches: [ main ]
+
+jobs:
+    print_messages:
+        runs-on: ubuntu-latest
+        steps:
+        - name: Check out repo
+          uses: actions/checkout@v4
+
+        - uses: ./.github/workflows/action.yml
+          with:
+            name: "Construyendo el futuro"
+            
+
+        
