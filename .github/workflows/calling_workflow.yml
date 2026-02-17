@@ -6,10 +6,17 @@ on:
         branches: [ main ]
 
 jobs:
-    print_messages:
+    get_messages:
         uses: ./.github/workflows/action.yml
         with:
             name: "Construyendo el futuro"
+
+    show_results:
+        runs-on: ubuntu-latest
+        needs: get_messages
+        steps:
+        - run: echo "${{ needs.get_messages.outputs.saludo }}"
+        - run: echo "${{ needs.get_messages.outputs.tiempo }}"
             
 
         
