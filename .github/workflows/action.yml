@@ -1,27 +1,35 @@
-name: 'Business Greetings'
+name: Generate greeting output
 
 on:
-  workflow_call:
-    inputs:
-      name:
-        required: true
-        default: 'Learner'
-        type: string
-    outputs: 
-      sentence:
-        description: " "
-        value: ${{ jobs.generate.outputs.sentence }}
-    
+    workflow_call:
+        inputs:
+            name:
+                required: true
+                default: "Alejandro"
+                type: string
+        outputs:
+            sentence:
+                description: "Sentence to greet the user"
+                value: ${{ jobs.generate_sentence.outputs.saludo }}
+            timestamp:
+                description: "when the greeting was generated"
+                value: ${{ jobs.generate_sentence.outputs.tiempo }}
+            
+
 jobs:
-  generate: 
-    runs-on: ubuntu-latest
-    outputs: 
-      sentence: ${{ steps.set_sentence.outputs.sentence }}
-    steps:
-    - name: Set sentence
-      id: set_sentence
-      #github.action_path apunta al folder donde se encuentra action.yml
-      run: |
-        message="Hello, ${{ inputs.name }}! Welcome to Continuous Integration."
-        echo "sentence=$message" >> $GITHUB_OUTPUT
-        echo "Este es el directorio $GITHUB_REF"
+    generate_sentence:
+        runs-on: ubuntu-latest
+        outputs:
+            saludo: ${{ steps.gen_greeting.outputs.saludo }}
+            tiempo: ${{ steps.gen_time.outputs.tiempo }}
+        steps:
+        - name: Generate the greeting
+          id: gen_greeting
+          run: |
+            salute="Hi ${{ inputs.name }}! Learning!"
+            echo "saludo=$salute" >> $GITHUB_OUTPUT
+        - name: Generate the moment of greeting
+          id: gen_time
+          run: |
+            hour="El mensaje fue generado a esta hora: $(date)""
+            echo "tiempo=$hour" >> $GITHUB_OUTPUT
